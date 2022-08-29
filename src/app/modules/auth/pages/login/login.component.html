@@ -1,6 +1,10 @@
 <div class="login__page">
   <mat-card>
-    <mat-card-title>NewRoute<span class="backoffice__title">/ BackOffice</span></mat-card-title>
+    <mat-card-title
+      >NewRoute<span class="backoffice__title"
+        >/ BackOffice</span
+      ></mat-card-title
+    >
     <mat-card-content>
       <form [formGroup]="loginForm">
         <p>
@@ -30,7 +34,17 @@
         </p>
 
         <div class="button">
-          <button type="submit" mat-button [disabled]="isInvalid" (click)="login()">Ingresar</button>
+          <button
+            type="submit"
+            mat-button
+            [disabled]="isInvalid"
+            (click)="login()"
+          >
+            <span *ngIf="!loading">Ingresar</span>
+            <mat-icon *ngIf="loading"
+              ><mat-spinner diameter="20"></mat-spinner
+            ></mat-icon>
+          </button>
         </div>
       </form>
     </mat-card-content>
