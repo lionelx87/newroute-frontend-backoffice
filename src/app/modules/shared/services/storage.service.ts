@@ -14,14 +14,14 @@ export class StorageService {
     this._localStorage = _localStorageNative.localStorage;
   }
 
-  setItem(data: any) {
+  async setItem(data: any) {
     const jsonData = JSON.stringify(data);
     this._localStorage.setItem('user', jsonData);
     this._data$.next(data);
   }
 
-  getItem(key: string) {
-    const data = JSON.parse(this._localStorage.getItem(key)!);
+  async getItem(key: string) {
+    const data = await JSON.parse(this._localStorage.getItem(key)!);
     this._data$.next(data);
     return data;
   }

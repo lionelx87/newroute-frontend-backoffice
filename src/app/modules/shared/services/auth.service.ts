@@ -13,7 +13,11 @@ export class AuthService {
   user = null;
 
   constructor(private http: HttpClient, private router: Router, private storageService: StorageService) { 
-    this.user = this.storageService.getItem('user');
+    this.init();
+  }
+
+  async init() {
+    this.user = await this.storageService.getItem('user');
   }
 
   isLogin() {
@@ -35,6 +39,12 @@ export class AuthService {
         return throwError(err.error);
       })
     );
+  }
+
+  async logout() {
+    await this.storageService.setItem(null);
+    this.user = null;
+    this.router.navigate(['login']);
   }
 
 }
