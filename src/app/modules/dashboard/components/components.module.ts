@@ -5,12 +5,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { SpotsListComponent } from './spots-list/spots-list.component';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    SpotsListComponent
   ],
   imports: [
     CommonModule,
@@ -18,9 +21,11 @@ import { MatMenuModule } from '@angular/material/menu';
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
+    MatCardModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    SpotsListComponent
   ]
 })
 export class ComponentsModule { }
