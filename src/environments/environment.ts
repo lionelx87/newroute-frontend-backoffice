@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  app: 'NewRoute Backoffice',
+  version: 'v1.0',
+  server: 'http://newroute.backend:8000',
+  backend: 'http://newroute.backend:8000/api'
 };
 
 /*
