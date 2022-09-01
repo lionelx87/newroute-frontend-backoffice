@@ -8,6 +8,24 @@ table {
   width: 100%;
 }
 
+.mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.mat-raised-button {
+  min-width: 50px;
+  line-height: 30px;
+}
+
+.edit__option {
+  margin-right: .5rem;
+}
+.delete__option {
+  background-color: #c21837;
+}
+
 th.mat-header-cell {
   text-align: center !important;
 }
