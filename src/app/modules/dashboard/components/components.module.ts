@@ -4,8 +4,12 @@ import { HeaderComponent } from './header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 import { SpotsListComponent } from './spots-list/spots-list.component';
 
 
@@ -21,7 +25,10 @@ import { SpotsListComponent } from './spots-list/spots-list.component';
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatTableModule,
+    MatFormFieldModule
   ],
   exports: [
     HeaderComponent,
