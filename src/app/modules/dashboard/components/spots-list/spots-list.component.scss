@@ -27,7 +27,10 @@ table {
 }
 
 th.mat-header-cell {
-  text-align: center !important;
+  text-align: left !important;
+}
+td.mat-cell {
+  text-align: left !important;
 }
 
 .header__container {

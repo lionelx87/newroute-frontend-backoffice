@@ -1,43 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { Spot } from 'src/app/models/spot.interface';
+import { SpotService } from 'src/app/modules/shared/services/spot.service';
 
 @Component({
   selector: 'app-spots-list',
   templateUrl: './spots-list.component.html',
-  styleUrls: ['./spots-list.component.scss']
+  styleUrls: ['./spots-list.component.scss'],
 })
 export class SpotsListComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['name', 'category', 'address', 'operations'];
+  dataSource = new MatTableDataSource<Spot>();
 
-  constructor() { }
+  constructor(private spotService: SpotService) {}
 
   ngOnInit(): void {
+    this.spotService.getSpots().subscribe((spots: Spot[]) => {
+      this.dataSource = new MatTableDataSource(spots);
+    });
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filterPredicate = (data, filter: string) => {
+      return (
+        data.name.trim().toLowerCase().includes(filter.trim().toLowerCase()) ||
+        data.category.name
+          .trim()
+          .toLowerCase()
+          .includes(filter.trim().toLowerCase()) ||
+        data.address.trim().toLowerCase().includes(filter.trim().toLowerCase())
+      );
+    };
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }
