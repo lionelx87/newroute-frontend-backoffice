@@ -1,0 +1,19 @@
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+th.mat-header-cell {
+  text-align: center !important;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
