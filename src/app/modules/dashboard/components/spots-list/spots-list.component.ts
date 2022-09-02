@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Spot } from 'src/app/models/spot.interface';
 import { SpotService } from 'src/app/modules/shared/services/spot.service';
+import { SweetAlertOptions } from 'sweetalert2';
 
 @Component({
   selector: 'app-spots-list',
@@ -11,6 +12,15 @@ import { SpotService } from 'src/app/modules/shared/services/spot.service';
 export class SpotsListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'category', 'address', 'operations'];
   dataSource = new MatTableDataSource<Spot>();
+
+  swalDelete: SweetAlertOptions = {
+    title: 'Eliminar Spot',
+    text: '¿Desea eliminar el spot de manera permanente?',
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    confirmButtonText: 'Aceptar',
+    confirmButtonColor: '#c2185b'
+  };
 
   constructor(private spotService: SpotService) {}
 
@@ -33,5 +43,11 @@ export class SpotsListComponent implements OnInit {
       );
     };
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  spotDelete(event: Event, element: number) {
+    this.spotService.spotDelete(element).subscribe( (data) => {
+      console.log(data);
+    });
   }
 }
