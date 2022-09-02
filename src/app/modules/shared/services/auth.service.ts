@@ -28,8 +28,8 @@ export class AuthService {
     return this.http.post(environment.backend + '/login-creators', user)
     .pipe(
       map(
-        (user: any) => {
-          this.user = user;    
+        (data: any) => {
+          this.user = data.user;
           this.router.navigate(['/dashboard']);
           this.storageService.setItem(this.user);
           return user;
