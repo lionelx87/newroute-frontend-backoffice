@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { catchError, map, throwError } from 'rxjs';
 import { StorageService } from './storage.service';
+import { User } from 'src/app/models/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  user = null;
+  user: User | null = null;
 
   constructor(private http: HttpClient, private router: Router, private storageService: StorageService) { 
     this.init();
@@ -28,8 +29,8 @@ export class AuthService {
     return this.http.post(environment.backend + '/login-creators', user)
     .pipe(
       map(
-        (user: any) => {
-          this.user = user;    
+        (data: any) => {
+          this.user = data.user;
           this.router.navigate(['/dashboard']);
           this.storageService.setItem(this.user);
           return user;

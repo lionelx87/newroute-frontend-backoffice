@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { SpotsListComponent } from './spots-list/spots-list.component';
 
@@ -28,6 +29,7 @@ import { SpotsListComponent } from './spots-list/spots-list.component';
     MatCardModule,
     MatInputModule,
     MatTableModule,
+    SweetAlert2Module.forRoot(),
     MatFormFieldModule
   ],
   exports: [

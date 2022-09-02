@@ -37,7 +37,7 @@
               <button mat-raised-button color="accent" class="edit__option">
                 <mat-icon>edit</mat-icon>
               </button>
-              <button mat-raised-button color="primary" class="delete__option">
+              <button mat-raised-button color="primary" class="delete__option" [swal]="swalDelete" (confirm)="spotDelete($event, element.id)">
                 <mat-icon>delete</mat-icon>
               </button>
           </td>
