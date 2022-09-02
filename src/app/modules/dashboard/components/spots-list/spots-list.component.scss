@@ -8,6 +8,10 @@ table {
   width: 100%;
 }
 
+.mat-form-field.mat-focused mat-label {
+  color: #fff;
+}
+
 .mat-icon {
   font-size: 18px;
   width: 18px;
