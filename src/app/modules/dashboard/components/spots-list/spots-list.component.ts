@@ -25,6 +25,10 @@ export class SpotsListComponent implements OnInit {
   constructor(private spotService: SpotService) {}
 
   ngOnInit(): void {
+    this.getSpots();
+  }
+
+  private getSpots() {
     this.spotService.getSpots().subscribe((spots: Spot[]) => {
       this.dataSource = new MatTableDataSource(spots);
     });
@@ -48,6 +52,7 @@ export class SpotsListComponent implements OnInit {
   spotDelete(event: Event, element: number) {
     this.spotService.spotDelete(element).subscribe( (data) => {
       console.log(data);
+      this.getSpots();
     });
   }
 }

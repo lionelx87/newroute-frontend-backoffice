@@ -16,10 +16,10 @@ export class SpotService {
     return this.http.get<Spot[]>( environment.backend + '/spots', { params } );
   }
 
-  spotDelete(id: number) {    
+  spotDelete(id: number) {
     return this.http.delete(
       environment.backend + '/spots/' + id,
-      { headers: new HttpHeaders().append('Authorization', `Bearer ${this.auth.user}`)
+      { headers: new HttpHeaders().append('Authorization', `Bearer ${this.auth.user?.token}`)
     });
   }
 
