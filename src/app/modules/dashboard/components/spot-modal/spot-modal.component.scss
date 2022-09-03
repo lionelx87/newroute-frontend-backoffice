@@ -1,0 +1,21 @@
+.spot-modal__container {
+    width: 1200px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    .map__container {
+        // border: 1px solid red;
+        width: 65%;
+
+    }
+
+    .form__container {
+        // border: 1px solid blue;
+    }
+}
+
+::ng-deep .mat-form-field-infix {
+    height: 10px;
+    font-size: 12px;
+}

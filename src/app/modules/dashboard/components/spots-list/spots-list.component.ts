@@ -60,7 +60,11 @@ export class SpotsListComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(SpotModalComponent);
+    const dialogRef = this.dialog.open(SpotModalComponent, {
+      data: {
+        title: 'Nuevo Spot'
+      }
+    });
 
     dialogRef.afterClosed().subscribe( result => {
       console.log('Dialog result: ', result);
