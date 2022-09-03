@@ -8,17 +8,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { SpotsListComponent } from './spots-list/spots-list.component';
+import { SpotModalComponent } from './spot-modal/spot-modal.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    SpotsListComponent
+    SpotsListComponent,
+    SpotModalComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +32,7 @@ import { SpotsListComponent } from './spots-list/spots-list.component';
     MatCardModule,
     MatInputModule,
     MatTableModule,
+    MatDialogModule,
     SweetAlert2Module.forRoot(),
     MatFormFieldModule
   ],
