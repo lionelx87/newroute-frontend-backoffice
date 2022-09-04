@@ -13,11 +13,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FilePondModule, registerPlugin } from 'ngx-filepond';
 
 import { SpotsListComponent } from './spots-list/spots-list.component';
 import { SpotModalComponent } from './spot-modal/spot-modal.component';
 
-
+import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import  * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
+registerPlugin(FilePondPluginFileValidateType, FilepondPluginImagePreview);
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { SpotModalComponent } from './spot-modal/spot-modal.component';
     MatDividerModule,
     SweetAlert2Module.forRoot(),
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    FilePondModule
   ],
   exports: [
     HeaderComponent,
