@@ -5,18 +5,48 @@
     <mat-divider [vertical]="true"></mat-divider>
     <div class="form__container">
       <form>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="category__field full__field">
           <mat-label>Categorías</mat-label>
           <mat-select>
             <mat-option value="one">First option</mat-option>
             <mat-option value="two">Second option</mat-option>
           </mat-select>
         </mat-form-field>
+        <mat-form-field appearance="fill" class="name-es__field full__field">
+          <mat-label>Nombre (es)</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="name-en__field full__field">
+          <mat-label>Nombre (en)</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field
+          appearance="fill"
+          class="description-es__field full__field"
+        >
+          <mat-label>Descripción (es)</mat-label>
+          <textarea rows="5" matInput></textarea>
+        </mat-form-field>
+        <mat-form-field
+          appearance="fill"
+          class="description-en__field full__field"
+        >
+          <mat-label>Descripción (en)</mat-label>
+          <textarea rows="5" matInput></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="address__field full__field">
+          <mat-label>Dirección</mat-label>
+          <input matInput />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="phones__field full__field">
+          <mat-label>Teléfonos</mat-label>
+          <input matInput />
+        </mat-form-field>
       </form>
     </div>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-close>Cancelar</button>
   <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
 </mat-dialog-actions>
