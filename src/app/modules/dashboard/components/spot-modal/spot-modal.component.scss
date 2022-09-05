@@ -1,3 +1,8 @@
+.mat-dialog-title {
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  padding-bottom: 5px;
+}
+
 .mat-dialog-content {
   overflow-x: hidden;
 }
@@ -8,12 +13,12 @@
   gap: 10px;
 
   .map__container {
-    border: 1px solid red;
+    // border: 1px solid red;
     flex-basis: 70%;
   }
 
   .form__container {
-    border: 1px solid blue;
+    // border: 1px solid blue;
     flex-basis: 30%;
 
     .full__field {

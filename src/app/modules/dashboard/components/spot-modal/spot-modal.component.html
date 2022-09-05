@@ -4,50 +4,59 @@
     <div class="map__container">Map</div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="form__container">
-      <form>
+      <form [formGroup]="spotForm">
         <mat-form-field appearance="fill" class="category__field full__field">
           <mat-label>Categorías</mat-label>
-          <mat-select>
+          <mat-select formControlName="category">
             <mat-option value="one">First option</mat-option>
             <mat-option value="two">Second option</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill" class="name-es__field full__field">
           <mat-label>Nombre (es)</mat-label>
-          <input matInput />
+          <input matInput formControlName="name_es" />
         </mat-form-field>
         <mat-form-field appearance="fill" class="name-en__field full__field">
           <mat-label>Nombre (en)</mat-label>
-          <input matInput />
+          <input matInput formControlName="name_en" />
         </mat-form-field>
         <mat-form-field
           appearance="fill"
           class="description-es__field full__field"
         >
           <mat-label>Descripción (es)</mat-label>
-          <textarea rows="5" matInput></textarea>
+          <textarea
+            rows="5"
+            matInput
+            formControlName="description_es"
+          ></textarea>
         </mat-form-field>
         <mat-form-field
           appearance="fill"
           class="description-en__field full__field"
         >
           <mat-label>Descripción (en)</mat-label>
-          <textarea rows="5" matInput></textarea>
+          <textarea
+            rows="5"
+            matInput
+            formControlName="description_en"
+          ></textarea>
         </mat-form-field>
         <mat-form-field appearance="fill" class="address__field full__field">
           <mat-label>Dirección</mat-label>
-          <input matInput />
+          <input matInput formControlName="address" />
         </mat-form-field>
         <mat-form-field appearance="fill" class="phones__field full__field">
           <mat-label>Teléfonos</mat-label>
-          <input matInput />
+          <input matInput formControlName="phones" />
         </mat-form-field>
-        <file-pond #myPond
-        [options]="pondOptions"
-        (oninit)="pondHandleInit()"
-        (onaddfile)="pondHandleAddFile($event)"
-        (onactivatefile)="pondHandleActivateFile($event)"
-        (onremovefile)="pondHandleRemoveFile($event)"
+        <file-pond
+          #myPond
+          [options]="pondOptions"
+          (oninit)="pondHandleInit()"
+          (onaddfile)="pondHandleAddFile($event)"
+          (onactivatefile)="pondHandleActivateFile($event)"
+          (onremovefile)="pondHandleRemoveFile($event)"
         >
         </file-pond>
       </form>
@@ -56,5 +65,13 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="prueba()" >Aceptar</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    [disabled]="isInvalid"
+    (click)="save()"
+  >
+    Aceptar
+  </button>
 </mat-dialog-actions>

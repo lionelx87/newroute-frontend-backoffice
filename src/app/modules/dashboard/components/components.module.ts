@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FilePondModule, registerPlugin } from 'ngx-filepond';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SpotsListComponent } from './spots-list/spots-list.component';
 import { SpotModalComponent } from './spot-modal/spot-modal.component';
@@ -42,6 +43,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginImagePreview);
     SweetAlert2Module.forRoot(),
     MatFormFieldModule,
     MatSelectModule,
+    ReactiveFormsModule,
     FilePondModule
   ],
   exports: [
