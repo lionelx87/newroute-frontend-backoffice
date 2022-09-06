@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FilePond, FilePondOptions } from 'filepond';
+import { SpotService } from 'src/app/modules/shared/services/spot.service';
 
 @Component({
   selector: 'app-spot-modal',
@@ -11,7 +12,7 @@ import { FilePond, FilePondOptions } from 'filepond';
 export class SpotModalComponent implements OnInit {
   @ViewChild('myPond') myPond!: FilePond;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private spotService: SpotService) { }
 
   pondOptions: FilePondOptions = {
     allowMultiple: true,
@@ -22,7 +23,7 @@ export class SpotModalComponent implements OnInit {
   }
 
   spotForm = new FormGroup({
-    category: new FormControl('', [Validators.required]),
+    category_id: new FormControl('', [Validators.required]),
     name_es: new FormControl('', [Validators.required]),
     name_en: new FormControl('', [Validators.required]),
     description_es: new FormControl('', [Validators.required]),
@@ -64,8 +65,19 @@ export class SpotModalComponent implements OnInit {
   save() {
     if(this.spotForm.valid) {
       const form = this.spotForm.value;
-      form.files = this.myPond.getFiles().map(elem => elem.file);
-      console.log('form: ', form);
+      const formData = new FormData();
+      for(const key of Object.keys(form)) {
+        const value = form[key];
+        formData.append(key, value);
+      }
+      // Images
+      const files = this.myPond.getFiles().map(elem => elem.file);
+      for(const image of files){
+        formData.append('files[]', image);
+      }
+      this.spotService.spotCreate(formData).subscribe( (resp) => {
+        console.log('respuesta: ', resp);
+      });
     }
   }
 

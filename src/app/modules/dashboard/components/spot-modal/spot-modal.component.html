@@ -4,12 +4,12 @@
     <div class="map__container">Map</div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="form__container">
-      <form [formGroup]="spotForm">
+      <form [formGroup]="spotForm" enctype="multipart/form-data">
         <mat-form-field appearance="fill" class="category__field full__field">
           <mat-label>Categorías</mat-label>
-          <mat-select formControlName="category">
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
+          <mat-select formControlName="category_id">
+            <mat-option value="1">First option</mat-option>
+            <mat-option value="2">Second option</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill" class="name-es__field full__field">
