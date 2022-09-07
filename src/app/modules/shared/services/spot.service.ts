@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Spot } from 'src/app/models/spot.interface';
 import { AuthService } from './auth.service';
+import { Category } from 'src/app/models/category.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -32,4 +33,10 @@ export class SpotService {
       ),
     });
   }
+
+  getCategories() {
+    const params = new HttpParams().set("lang", 'es');
+    return this.http.get<Category[]>(environment.backend + '/categories', { params });
+  }
+
 }

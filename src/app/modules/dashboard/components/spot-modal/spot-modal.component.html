@@ -8,8 +8,7 @@
         <mat-form-field appearance="fill" class="category__field full__field">
           <mat-label>Categorías</mat-label>
           <mat-select formControlName="category_id">
-            <mat-option value="1">First option</mat-option>
-            <mat-option value="2">Second option</mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill" class="name-es__field full__field">

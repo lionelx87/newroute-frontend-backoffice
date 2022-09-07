@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FilePond, FilePondOptions } from 'filepond';
+import { Category } from 'src/app/models/category.interface';
 import { SpotService } from 'src/app/modules/shared/services/spot.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { SpotService } from 'src/app/modules/shared/services/spot.service';
 })
 export class SpotModalComponent implements OnInit {
   @ViewChild('myPond') myPond!: FilePond;
+  categories: Category[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -37,7 +39,12 @@ export class SpotModalComponent implements OnInit {
     phones: new FormControl(''),
   });
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.spotService.getCategories()
+      .subscribe( (categories: Category[]) => {
+        this.categories = categories;
+      });
+  }
 
   get isInvalid() {
     return this.spotForm.invalid;
