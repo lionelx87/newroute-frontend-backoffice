@@ -27,6 +27,11 @@
   }
 }
 
+.google-maps__container {
+  position: sticky;
+  top: 0;
+}
+
 ::ng-deep .mat-form-field-infix {
   // height: 10px;
   // font-size: 12px;

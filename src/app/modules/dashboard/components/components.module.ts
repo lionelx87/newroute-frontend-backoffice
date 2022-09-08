@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SpotsListComponent } from './spots-list/spots-list.component';
 import { SpotModalComponent } from './spot-modal/spot-modal.component';
 
+import { GoogleMapsModule } from '@angular/google-maps';
+
 import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import  * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginImagePreview);
@@ -44,7 +46,8 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginImagePreview);
     MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
-    FilePondModule
+    FilePondModule,
+    GoogleMapsModule
   ],
   exports: [
     HeaderComponent,

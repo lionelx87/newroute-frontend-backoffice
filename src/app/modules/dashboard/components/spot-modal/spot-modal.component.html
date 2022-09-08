@@ -1,14 +1,25 @@
 <h2 mat-dialog-title>{{ data.title }}</h2>
 <mat-dialog-content class="mat-typography">
   <div class="spot-modal__container">
-    <div class="map__container">Map</div>
+    <div class="map__container">
+      <google-map
+        [options]="options"
+        width="100%"
+        height="590px"
+        class="google-maps__container"
+      ></google-map>
+    </div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="form__container">
       <form [formGroup]="spotForm" enctype="multipart/form-data">
         <mat-form-field appearance="fill" class="category__field full__field">
           <mat-label>Categorías</mat-label>
           <mat-select formControlName="category_id">
-            <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+            <mat-option
+              *ngFor="let category of categories"
+              [value]="category.id"
+              >{{ category.name }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill" class="name-es__field full__field">
@@ -64,12 +75,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button
-    mat-button
-    cdkFocusInitial
-    [disabled]="isInvalid"
-    (click)="save()"
-  >
+  <button mat-button cdkFocusInitial [disabled]="isInvalid" (click)="save()">
     Aceptar
   </button>
 </mat-dialog-actions>

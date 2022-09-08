@@ -13,6 +13,10 @@ import { SpotService } from 'src/app/modules/shared/services/spot.service';
 export class SpotModalComponent implements OnInit {
   @ViewChild('myPond') myPond!: FilePond;
   categories: Category[] = [];
+  options: google.maps.MapOptions = {
+    center: { lat: -46.441774, lng: -67.517348 },
+    zoom: 14,
+  };
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -41,10 +45,9 @@ export class SpotModalComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.spotService.getCategories()
-      .subscribe( (categories: Category[]) => {
-        this.categories = categories;
-      });
+    this.spotService.getCategories().subscribe((categories: Category[]) => {
+      this.categories = categories;
+    });
   }
 
   get isInvalid() {
@@ -86,7 +89,7 @@ export class SpotModalComponent implements OnInit {
         formData.append('files[]', image);
       }
       this.spotService.spotCreate(formData).subscribe(({ status }: any) => {
-        if( status === 201 ) {
+        if (status === 201) {
           this.dialogRef.close(true);
         }
       });
