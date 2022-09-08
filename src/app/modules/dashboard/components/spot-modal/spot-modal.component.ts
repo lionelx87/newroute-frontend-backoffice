@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FilePond, FilePondOptions } from 'filepond';
 import { Category } from 'src/app/models/category.interface';
 import { SpotService } from 'src/app/modules/shared/services/spot.service';
@@ -16,7 +16,8 @@ export class SpotModalComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private spotService: SpotService
+    private spotService: SpotService,
+    public dialogRef: MatDialogRef<SpotModalComponent>
   ) {}
 
   pondOptions: FilePondOptions = {
@@ -84,8 +85,10 @@ export class SpotModalComponent implements OnInit {
       for (const image of files) {
         formData.append('files[]', image);
       }
-      this.spotService.spotCreate(formData).subscribe((resp) => {
-        console.log('respuesta: ', resp);
+      this.spotService.spotCreate(formData).subscribe(({ status }: any) => {
+        if( status === 201 ) {
+          this.dialogRef.close(true);
+        }
       });
     }
   }
