@@ -7,7 +7,16 @@
         width="100%"
         height="590px"
         class="google-maps__container"
-      ></google-map>
+        (mapClick)="clickOnMap($event)"
+      >
+      <map-marker
+        *ngFor="let markerPosition of markerPositions"
+        [position]="markerPosition"
+        [options]="markerOptions"
+      >
+
+      </map-marker>
+    </google-map>
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="form__container">

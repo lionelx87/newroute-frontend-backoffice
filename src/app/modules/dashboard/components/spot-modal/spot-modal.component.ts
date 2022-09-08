@@ -17,6 +17,8 @@ export class SpotModalComponent implements OnInit {
     center: { lat: -46.441774, lng: -67.517348 },
     zoom: 14,
   };
+  markerOptions: google.maps.MarkerOptions = { draggable: false };
+  markerPositions: google.maps.LatLngLiteral[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -94,6 +96,17 @@ export class SpotModalComponent implements OnInit {
         }
       });
     }
+  }
+
+  clickOnMap(event: google.maps.MapMouseEvent) {
+    console.log('lat: ', event.latLng?.lat());
+    console.log('lng: ', event.latLng?.lng());
+    this.markerPositions = [];
+    this.addMaker(event);
+  }
+
+  addMaker(event: google.maps.MapMouseEvent) {
+    this.markerPositions.push(event.latLng?.toJSON()!);
   }
 
   private slugify = (str: string) =>
