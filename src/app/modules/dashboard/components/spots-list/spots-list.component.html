@@ -4,7 +4,7 @@
           <mat-label>Buscar spot...</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Ej: Gorosito" #input>
         </mat-form-field>
-        <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon">
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openDialog()">
           <mat-icon>add_location</mat-icon>
         </button>
     </div>

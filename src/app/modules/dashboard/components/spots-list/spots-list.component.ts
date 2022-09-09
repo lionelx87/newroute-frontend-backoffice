@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Spot } from 'src/app/models/spot.interface';
 import { SpotService } from 'src/app/modules/shared/services/spot.service';
 import { SweetAlertOptions } from 'sweetalert2';
+import { SpotModalComponent } from '../spot-modal/spot-modal.component';
 
 @Component({
   selector: 'app-spots-list',
@@ -19,10 +21,11 @@ export class SpotsListComponent implements OnInit {
     showCancelButton: true,
     cancelButtonText: 'Cancelar',
     confirmButtonText: 'Aceptar',
-    confirmButtonColor: '#c2185b'
+    confirmButtonColor: '#c2185b',
+    reverseButtons: true
   };
 
-  constructor(private spotService: SpotService) {}
+  constructor(private spotService: SpotService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getSpots();
@@ -55,4 +58,16 @@ export class SpotsListComponent implements OnInit {
       this.getSpots();
     });
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(SpotModalComponent, {
+      data: {
+        title: 'Nuevo Spot'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe( success => success && this.getSpots() );
+
+  }
+
 }
