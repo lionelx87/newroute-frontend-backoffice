@@ -54,20 +54,17 @@ export class SpotsListComponent implements OnInit {
 
   spotDelete(event: Event, element: number) {
     this.spotService.spotDelete(element).subscribe( (data) => {
-      console.log(data);
       this.getSpots();
     });
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(SpotModalComponent, {
-      data: {
-        title: 'Nuevo Spot'
-      }
-    });
-
+  openDialog(spot?: Spot) {
+    const data = {
+      title: spot ? 'Modificar Spot' : 'Nuevo Spot',
+      spot: spot ? spot : null
+    };
+    const dialogRef = this.dialog.open(SpotModalComponent, { data });
     dialogRef.afterClosed().subscribe( success => success && this.getSpots() );
-
   }
 
 }

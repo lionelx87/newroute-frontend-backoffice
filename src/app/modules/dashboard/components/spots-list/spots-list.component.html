@@ -34,7 +34,7 @@
           <th mat-header-cell *matHeaderCellDef></th>
           <!-- <td mat-cell *matCellDef="let element"> {{element.symbol}} </td> -->
           <td mat-cell *matCellDef="let element" class="operations__container">
-              <button mat-raised-button color="accent" class="edit__option">
+              <button mat-raised-button color="accent" class="edit__option" (click)="openDialog( element )" >
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-raised-button color="primary" class="delete__option" [swal]="swalDelete" (confirm)="spotDelete($event, element.id)">

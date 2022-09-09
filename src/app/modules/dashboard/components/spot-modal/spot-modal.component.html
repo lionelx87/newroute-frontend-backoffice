@@ -23,7 +23,7 @@
       <form [formGroup]="spotForm" enctype="multipart/form-data">
         <mat-form-field appearance="fill" class="category__field full__field">
           <mat-label>Categorías</mat-label>
-          <mat-select formControlName="category_id">
+          <mat-select formControlName="category_id" [(value)]="selected">
             <mat-option
               *ngFor="let category of categories"
               [value]="category.id"
@@ -71,6 +71,7 @@
         </mat-form-field>
         <file-pond
           #myPond
+          [files]="pondFiles"
           [options]="pondOptions"
           (oninit)="pondHandleInit()"
           (onaddfile)="pondHandleAddFile($event)"
