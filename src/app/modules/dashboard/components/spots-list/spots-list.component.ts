@@ -66,11 +66,7 @@ export class SpotsListComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe( result => {
-      if(result) {
-        this.getSpots();
-      }
-    });
+    dialogRef.afterClosed().subscribe( success => success && this.getSpots() );
 
   }
 

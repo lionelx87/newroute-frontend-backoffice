@@ -41,8 +41,8 @@ export class SpotModalComponent implements OnInit {
     description_es: new FormControl('', [Validators.required]),
     description_en: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
-    latitude: new FormControl('-46.435352'),
-    longitude: new FormControl('-67.521189'),
+    latitude: new FormControl('', [Validators.required]),
+    longitude: new FormControl('', [Validators.required]),
     phones: new FormControl(''),
   });
 
@@ -99,8 +99,8 @@ export class SpotModalComponent implements OnInit {
   }
 
   clickOnMap(event: google.maps.MapMouseEvent) {
-    console.log('lat: ', event.latLng?.lat());
-    console.log('lng: ', event.latLng?.lng());
+    this.spotForm.controls['latitude'].setValue(event.latLng?.lat());
+    this.spotForm.controls['longitude'].setValue(event.latLng?.lng());
     this.markerPositions = [];
     this.addMaker(event);
   }
