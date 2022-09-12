@@ -34,6 +34,15 @@ export class SpotService {
     });
   }
 
+  spotModify(id: number, spot: any) {
+    return this.http.post(environment.backend + '/spots/' + id + '?_method=PUT', spot, {
+      headers: new HttpHeaders().append(
+        'Authorization',
+        `Bearer ${this.auth.user?.token}`
+      ),
+    })
+  }
+
   getCategories() {
     const params = new HttpParams().set("lang", 'es');
     return this.http.get<Category[]>(environment.backend + '/categories', { params });

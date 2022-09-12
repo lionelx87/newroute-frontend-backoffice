@@ -9,21 +9,20 @@
         class="google-maps__container"
         (mapClick)="clickOnMap($event)"
       >
-      <map-marker
-        *ngFor="let markerPosition of markerPositions"
-        [position]="markerPosition"
-        [options]="markerOptions"
-      >
-
-      </map-marker>
-    </google-map>
+        <map-marker
+          *ngFor="let markerPosition of markerPositions"
+          [position]="markerPosition"
+          [options]="markerOptions"
+        >
+        </map-marker>
+      </google-map>
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="form__container">
       <form [formGroup]="spotForm" enctype="multipart/form-data">
         <mat-form-field appearance="fill" class="category__field full__field">
           <mat-label>Categorías</mat-label>
-          <mat-select formControlName="category_id">
+          <mat-select formControlName="category_id" [(value)]="selected">
             <mat-option
               *ngFor="let category of categories"
               [value]="category.id"
@@ -69,14 +68,7 @@
           <mat-label>Teléfonos</mat-label>
           <input matInput formControlName="phones" />
         </mat-form-field>
-        <file-pond
-          #myPond
-          [options]="pondOptions"
-          (oninit)="pondHandleInit()"
-          (onaddfile)="pondHandleAddFile($event)"
-          (onactivatefile)="pondHandleActivateFile($event)"
-          (onremovefile)="pondHandleRemoveFile($event)"
-        >
+        <file-pond #myPond [files]="pondFiles" [options]="pondOptions">
         </file-pond>
       </form>
     </div>
