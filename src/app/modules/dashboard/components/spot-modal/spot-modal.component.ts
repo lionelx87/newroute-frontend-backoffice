@@ -100,16 +100,24 @@ export class SpotModalComponent implements OnInit {
         const value = form[key];
         formData.append(key, value);
       }
-      // Images
       const files = this.myPond.getFiles().map((elem) => elem.file);
       for (const image of files) {
         formData.append('files[]', image);
       }
-      this.spotService.spotCreate(formData).subscribe(({ status }: any) => {
-        if (status === 201) {
-          this.dialogRef.close(true);
-        }
-      });
+
+      if(this.data.spot) {
+        this.spotService.spotModify(this.data.spot.id, formData).subscribe(({ status }: any) => {
+          if(status === 201) {
+            this.dialogRef.close(true);
+          }
+        });
+      } else {
+        this.spotService.spotCreate(formData).subscribe(({ status }: any) => {
+          if (status === 201) {
+            this.dialogRef.close(true);
+          }
+        });
+      }      
     }
   }
 
