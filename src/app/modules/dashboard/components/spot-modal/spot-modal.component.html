@@ -9,14 +9,13 @@
         class="google-maps__container"
         (mapClick)="clickOnMap($event)"
       >
-      <map-marker
-        *ngFor="let markerPosition of markerPositions"
-        [position]="markerPosition"
-        [options]="markerOptions"
-      >
-
-      </map-marker>
-    </google-map>
+        <map-marker
+          *ngFor="let markerPosition of markerPositions"
+          [position]="markerPosition"
+          [options]="markerOptions"
+        >
+        </map-marker>
+      </google-map>
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="form__container">
@@ -69,15 +68,7 @@
           <mat-label>Teléfonos</mat-label>
           <input matInput formControlName="phones" />
         </mat-form-field>
-        <file-pond
-          #myPond
-          [files]="pondFiles"
-          [options]="pondOptions"
-          (oninit)="pondHandleInit()"
-          (onaddfile)="pondHandleAddFile($event)"
-          (onactivatefile)="pondHandleActivateFile($event)"
-          (onremovefile)="pondHandleRemoveFile($event)"
-        >
+        <file-pond #myPond [files]="pondFiles" [options]="pondOptions">
         </file-pond>
       </form>
     </div>
