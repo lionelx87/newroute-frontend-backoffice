@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidatePhone } from '../../../shared/validators/phone.validator';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FilePond, FilePondOptions } from 'filepond';
 import { Category } from 'src/app/models/category.interface';
@@ -65,7 +66,9 @@ export class SpotModalComponent implements OnInit {
     phones: new FormControl(
       this.data.spot && this.data.spot.phones.length > 0
         ? this.data.spot.phones.map((phone: any) => phone.number).join(',')
-        : ''
+        : '', [
+          Validators.required, ValidatePhone()
+        ]
     ),
   });
 
@@ -103,6 +106,7 @@ export class SpotModalComponent implements OnInit {
   private generateFormData() {
     const form = this.spotForm.value;
     form.images = this.slugify(this.spotForm.controls['name_es'].value);
+    form.phones = form.phones.trim().split(",").filter((filter: string) => filter).join(",");
     const formData = new FormData();
     for (const key of Object.keys(form)) {
       const value = form[key];
