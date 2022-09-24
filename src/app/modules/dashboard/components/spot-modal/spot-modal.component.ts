@@ -33,7 +33,7 @@ export class SpotModalComponent implements OnInit {
   pondOptions: FilePondOptions = {
     allowMultiple: true,
     labelIdle: 'Arrastrá o selecciona las imágenes...',
-    // acceptedFileTypes: ['image/jpeg, image/png', 'image/jpg'],
+    acceptedFileTypes: ['image/*'],
     allowReorder: true,
     maxFiles: 5,
   };
