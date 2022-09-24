@@ -26,7 +26,7 @@
             <mat-option
               *ngFor="let category of categories"
               [value]="category.id"
-              >{{ category.name }}</mat-option
+              >{{ category.name | titlecase }}</mat-option
             >
           </mat-select>
         </mat-form-field>
@@ -40,22 +40,22 @@
         </mat-form-field>
         <mat-form-field
           appearance="fill"
-          class="description-es__field full__field"
+          class="description-es__field textarea full__field"
         >
           <mat-label>Descripción (es)</mat-label>
           <textarea
-            rows="5"
+            rows="3"
             matInput
             formControlName="description_es"
           ></textarea>
         </mat-form-field>
         <mat-form-field
           appearance="fill"
-          class="description-en__field full__field"
+          class="description-en__field textarea full__field"
         >
           <mat-label>Descripción (en)</mat-label>
           <textarea
-            rows="5"
+            rows="3"
             matInput
             formControlName="description_en"
           ></textarea>
@@ -66,7 +66,7 @@
         </mat-form-field>
         <mat-form-field appearance="fill" class="phones__field full__field">
           <mat-label>Teléfonos</mat-label>
-          <input matInput formControlName="phones" />
+          <input matInput formControlName="phones" placeholder="Ej: 4859756,2975098632" />
         </mat-form-field>
         <file-pond #myPond [files]="pondFiles" [options]="pondOptions">
         </file-pond>

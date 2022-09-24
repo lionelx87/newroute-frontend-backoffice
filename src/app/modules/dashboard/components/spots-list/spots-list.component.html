@@ -14,19 +14,19 @@
         <!-- Position Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Nombre </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.name | titlecase }} </td>
         </ng-container>
       
         <!-- Name Column -->
         <ng-container matColumnDef="category">
           <th mat-header-cell *matHeaderCellDef> Categoría </th>
-          <td mat-cell *matCellDef="let element"> {{ element.category.name }} </td>
+          <td mat-cell *matCellDef="let element"> {{ element.category.name | titlecase }} </td>
         </ng-container>
       
         <!-- Weight Column -->
         <ng-container matColumnDef="address">
           <th mat-header-cell *matHeaderCellDef> Dirección </th>
-          <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.address | titlecase }} </td>
         </ng-container>
       
         <!-- Symbol Column -->

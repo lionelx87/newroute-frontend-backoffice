@@ -42,3 +42,9 @@ td.mat-cell {
   align-items: center;
   gap: 3rem;
 }
+
+::ng-deep {
+  .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: rgba(255, 255, 255, .7);
+  }
+}

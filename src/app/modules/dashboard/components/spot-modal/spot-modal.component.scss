@@ -32,7 +32,26 @@
   top: 0;
 }
 
-::ng-deep .mat-form-field-infix {
-  // height: 10px;
-  // font-size: 12px;
+::ng-deep .mat-form-field:not(.textarea) .mat-form-field-infix {
+  height: 10px;
+  font-size: 12px;
 }
+
+::ng-deep {
+  .mat-form-field.mat-focused .mat-form-field-label {
+    color: rgba(255,255,255,.7);
+  }
+}
+
+::ng-deep {
+  .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: #ff6357;
+  }
+}
+
+::ng-deep {
+  .filepond--credits {
+    display: none !important;
+  }
+}
+
