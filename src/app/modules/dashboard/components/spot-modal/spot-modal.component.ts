@@ -67,7 +67,7 @@ export class SpotModalComponent implements OnInit {
       this.data.spot && this.data.spot.phones.length > 0
         ? this.data.spot.phones.map((phone: any) => phone.number).join(',')
         : '', [
-          Validators.required, ValidatePhone()
+          ValidatePhone()
         ]
     ),
   });
